@@ -7,9 +7,9 @@ To set up a two-broker Kafka cluster on two Ubuntu nodes (*node1* and *node2*), 
 * `sudo apt-get install default-jre`
 * `sudo apt-get install default-jdk`
 * `mkdir ~/kafka`
-* `wget kafka.tar.gz` (check https://www.apache.org/dyn/closer.cgi?path=/kafka/0.8.2.0/kafka_2.10-0.8.2.0.tgz for download mirrors)
+* `wget kafka.tgz` (check https://www.apache.org/dyn/closer.cgi?path=/kafka/0.8.2.0/kafka_2.10-0.8.2.0.tgz for download mirrors)
 * `cd ~/kafka`
-* `tar -xzf ../kafka.tar.gz -- strip 1`
+* `tar -xzf ../kafka.tgz -- strip 1`
 * `vi config/zookeeper.properties`
 ```
 server.1=node1:2888:3888
