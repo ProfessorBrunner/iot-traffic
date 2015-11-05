@@ -19,7 +19,7 @@ SPARK_MASTER_IP=$master_ip
 ```
 * Ensure that an entry for `$master_ip` exists in `/etc/hosts`.
 
-On the master:
+On the master -
 
 * To ensure that the workers can connect to the master, open port `7077`. On Azure, this can be done from the *Endpoints* tab on the dashboard.
 * If you'd like the Spark Master Web UI to be visible externally, open port `8080`. 
@@ -32,13 +32,13 @@ On the master:
 
 The Spark Web UI should now be visible at *$external_master_ip:8080*.
 
-On the workers:
+On the workers -
 
 * Start the worker process:
 
 	```
 	cd ~/spark
-	./sbin/start-slave.sh spark://$master_ip:7077`
+	./sbin/start-slave.sh spark://$master_ip:7077
 	```
 
 The Web UI should now show the workers as *ALIVE*.
