@@ -14,9 +14,10 @@ On all nodes -
 * `cd spark-1.5.1-bin-hadoop2.6/conf`
 * `cp spark-env.sh.template spark-env.sh`
 * `vi spark-env.sh`
-```
-SPARK_MASTER_IP=$master_ip
-```
+	
+	```
+	SPARK_MASTER_IP=$master_ip
+	```
 * Ensure that an entry for `$master_ip` exists in `/etc/hosts`.
 
 On the master -
