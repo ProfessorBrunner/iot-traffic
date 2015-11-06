@@ -2,7 +2,6 @@ Real time traffic visualization
 ====================================================
 <p><b>Angular Front End and Node Backend<b></p>
 
-<h4>Demo: <a href="#" target="_blank"> TBD</a></h4>
         <ol>
             <li>Install Node</li>
             <li>Install Bower <pre>npm install bower -g</pre></li>
