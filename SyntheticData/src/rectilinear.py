@@ -7,7 +7,7 @@ import geolib as geo
 
 EARTH_RADIUS = 6378.1						# Radius of earth
 SEED_COORDINATE = (40.12009,-88.247681)		# Coordinate
-SEED_VELOCITY = 10							# 10 miles/hour
+SEED_VELOCITY = 20							# 10 miles/hour
 SEED_TIME = 0.0833333						# 5 minutes converted to hour
 SEED_DIRECTION = 90							# 90 degrees
 SEED_VELOCITY_CRASHED = 5					# 5 miles/hour
@@ -100,3 +100,52 @@ def get_random_coordinates_positive_acceleration(num_coordinates):
 		csv = str(next_coordinate[0]) + ',' + str(next_coordinate[1])
 		print(csv)
 #end_def
+
+"""
+	Get sudden dip
+"""
+def get_random_coordinates_sudden_dip(num_coordinates):
+	result = []
+	current_coordinate = SEED_COORDINATE
+	time_stamp = datetime.datetime.now()
+	first_stamp = time_stamp
+	unique_id = uuid.uuid4()
+	first_car_data = []
+
+	for i in range(num_coordinates/3):
+		distance_travelled = SEED_VELOCITY * SEED_TIME
+		next_coordinate = geo.predict_next_coordinate(current_coordinate, distance_travelled, SEED_DIRECTION)
+		current_coordinate = next_coordinate
+		json_object = {}
+		json_object['car_id'] = str(unique_id)
+		json_object['latitude'] = current_coordinate[0]
+		json_object['longitude'] = current_coordinate[1]
+		json_object['time_stamp'] = str(time_stamp)
+		first_car_data.append(json_object)
+		time_stamp = time_stamp + datetime.timedelta(0, 300)
+
+	for i in range(num_coordinates/3):
+		distance_travelled = (SEED_VELOCITY-10) * SEED_TIME
+		next_coordinate = geo.predict_next_coordinate(current_coordinate, distance_travelled, SEED_DIRECTION)
+		current_coordinate = next_coordinate
+		json_object = {}
+		json_object['car_id'] = str(unique_id)
+		json_object['latitude'] = current_coordinate[0]
+		json_object['longitude'] = current_coordinate[1]
+		json_object['time_stamp'] = str(time_stamp)
+		first_car_data.append(json_object)
+		time_stamp = time_stamp + datetime.timedelta(0, 300)
+
+	for i in range(num_coordinates/3):
+		distance_travelled = SEED_VELOCITY * SEED_TIME
+		next_coordinate = geo.predict_next_coordinate(current_coordinate, distance_travelled, SEED_DIRECTION)
+		current_coordinate = next_coordinate
+		json_object = {}
+		json_object['car_id'] = str(unique_id)
+		json_object['latitude'] = current_coordinate[0]
+		json_object['longitude'] = current_coordinate[1]
+		json_object['time_stamp'] = str(time_stamp)
+		first_car_data.append(json_object)
+		time_stamp = time_stamp + datetime.timedelta(0, 300)
+	result.append(first_car_data)
+	return result
