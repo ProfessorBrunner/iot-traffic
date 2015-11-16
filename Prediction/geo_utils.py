@@ -4,6 +4,25 @@ import math
 from geopy.distance import great_circle
 from geopy.distance import VincentyDistance
 
+
+class Point:
+    def __init__(self, latitude, longitude, timestamp, car_id):
+        self.latitude = latitude
+        self.longitude = longitude
+        self.timestamp = timestamp
+        self.car_id = car_id
+
+
+"""Convert String timestamp in file to time variable
+"""
+def convert_timestamp(timestamp):
+    #2015-11-13 14:34:54.963036
+    stamp = time.strptime(timestamp, "%Y-%m-%d %H:%M:%S.%f")
+    result = time.mktime(stamp)
+    return result
+
+
+
 """Simple formula for speed
 Conventional units will be km/s
 """
