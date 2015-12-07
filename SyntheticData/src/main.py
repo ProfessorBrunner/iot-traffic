@@ -19,11 +19,16 @@ def generate_and_populate_rect_data_for_n_cars(data_points, num_cars):
              encoded = message_str.encode()
              producer.send_messages(b'mytopic', encoded)
 
-def generate_rect_data_speed_dip():
-    res = rect.get_random_coordinates_sudden_dip(750)
+def generate_rect_data_speed_dip(data_points):
+    res = rect.get_random_coordinates_sudden_dip(data_points)
+    text_file_name = 'data_for_sudden_dip.json'
+    fio.json_write_to_file(res, text_file_name)
+
+def generate_rect_data_speed_dip_varying(data_points):
+    res = rect.get_random_coordinates_sudden_dip_varying(data_points)
     text_file_name = 'data_for_sudden_dip.json'
     fio.json_write_to_file(res, text_file_name)
 
 if __name__ == '__main__':
     #generate_and_populate_rect_data_for_n_cars(100, 1)
-    generate_rect_data_speed_dip()
+    generate_rect_data_speed_dip_varying(300)
