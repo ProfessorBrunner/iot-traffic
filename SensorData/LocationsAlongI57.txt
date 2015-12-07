@@ -1,0 +1,11 @@
+41.723361, -87.625006 #Roseland in Chicago
+41.569277, -87.741954 #Bremen in IL
+number of sensors = 5
+40.121347, -88.310619 #Champaign
+number of sensors = 50
+39.168060, -88.509080 #Effingham
+number of sensors = 25
+38.689314, -88.979941 #Tonti
+number of sensors = 15
+36.907961, -89.347108 #Charleston
+number of sensors = 50
