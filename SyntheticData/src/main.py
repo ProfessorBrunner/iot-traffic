@@ -4,7 +4,7 @@ import accident as accident
 import sys
 from kafka import SimpleProducer, KafkaClient
 
-SEED_BROKER = '141.142.236.172:9092'
+SEED_BROKER = '0.0.0.0:TEMP'
 
 def generate_and_populate_rect_data_for_n_cars(data_points, num_cars):
     res = rect.get_n_car_motion_for_random_coordinates(data_points, num_cars)
