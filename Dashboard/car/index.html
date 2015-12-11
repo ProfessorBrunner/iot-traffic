@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO receiver</title>
+  </head>
+  <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+    <script>
+    var ref = new Firebase("https://trafficiot.firebaseio.com/demo/data");
+      // ref.on("value", function(snapshot) {
+      ref.on("child_added", function(snapshot) {
+        var temp = snapshot.val();
+        console.log(temp);
+        if(temp != null || temp != undefined){
+        // console.log(temp.full_name);
+        console.log(temp.traffic_message.message_details);
+        toastr.success(temp.traffic_message.message_details);
+      }
+      }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      });
+    </script>
+    <h1>Car message Dashboard</h1>
+<p id="message">
+</p>
+
+  </body>
+</html>
