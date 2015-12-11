@@ -1,3 +1,10 @@
+"""
+	Randomizer could be better - Work on Randomizer
+	Functions:
+		- N car motion for random coordinates
+		- Speed drop data for non varying speeds
+		- Speed drop data for varying speeds
+"""
 import random
 import sys
 from time import strftime
@@ -100,6 +107,80 @@ def get_random_coordinates_positive_acceleration(num_coordinates):
 		csv = str(next_coordinate[0]) + ',' + str(next_coordinate[1])
 		print(csv)
 #end_def
+
+"""
+	Get sudden dip with varying velocities
+"""
+def get_random_coordinates_sudden_dip_varying(num_coordinates):
+	result = []
+	current_coordinate = SEED_COORDINATE
+	time_stamp = datetime.datetime.now()
+	first_stamp = time_stamp
+	unique_id = uuid.uuid4()
+	first_car_data = []
+	current_velocity = SEED_VELOCITY
+
+	for i in range(num_coordinates/3):
+		distance_travelled = current_velocity * SEED_TIME
+		next_coordinate = geo.predict_next_coordinate(current_coordinate, distance_travelled, SEED_DIRECTION)
+		current_coordinate = next_coordinate
+		json_object = {}
+		json_object['car_id'] = str(unique_id)
+		json_object['latitude'] = current_coordinate[0]
+		json_object['longitude'] = current_coordinate[1]
+		json_object['time_stamp'] = str(time_stamp)
+		first_car_data.append(json_object)
+		time_stamp = time_stamp + datetime.timedelta(0, 300)
+		random_dict = randomize_conditions(2)
+		print(i, current_velocity)
+		if random_dict['direction'] == 1:
+			current_velocity = current_velocity + random_dict['velocity_change']
+		if random_dict['direction'] == 0:
+			if current_velocity + random_dict['velocity_change'] > 10:
+			 	current_velocity = current_velocity - random_dict['velocity_change']
+
+	current_velocity = current_velocity - 8
+	for i in range(num_coordinates/3):
+		distance_travelled = current_velocity * SEED_TIME
+		next_coordinate = geo.predict_next_coordinate(current_coordinate, distance_travelled, SEED_DIRECTION)
+		current_coordinate = next_coordinate
+		json_object = {}
+		json_object['car_id'] = str(unique_id)
+		json_object['latitude'] = current_coordinate[0]
+		json_object['longitude'] = current_coordinate[1]
+		json_object['time_stamp'] = str(time_stamp)
+		first_car_data.append(json_object)
+		time_stamp = time_stamp + datetime.timedelta(0, 300)
+		random_dict = randomize_conditions(2)
+		print(i, current_velocity)
+		if random_dict['direction'] == 1:
+			current_velocity = current_velocity + random_dict['velocity_change']
+		if random_dict['direction'] == 0:
+			if current_velocity + random_dict['velocity_change'] > 6:
+			 	current_velocity = current_velocity - random_dict['velocity_change']
+
+	current_velocity = current_velocity + 8
+	for i in range(num_coordinates/3):
+		distance_travelled = current_velocity * SEED_TIME
+		next_coordinate = geo.predict_next_coordinate(current_coordinate, distance_travelled, SEED_DIRECTION)
+		current_coordinate = next_coordinate
+		json_object = {}
+		json_object['car_id'] = str(unique_id)
+		json_object['latitude'] = current_coordinate[0]
+		json_object['longitude'] = current_coordinate[1]
+		json_object['time_stamp'] = str(time_stamp)
+		first_car_data.append(json_object)
+		time_stamp = time_stamp + datetime.timedelta(0, 300)
+		random_dict = randomize_conditions(2)
+		print(i, current_velocity)
+		if random_dict['direction'] == 1:
+			current_velocity = current_velocity + random_dict['velocity_change']
+		if random_dict['direction'] == 0:
+			if current_velocity + random_dict['velocity_change'] > 10:
+			 	current_velocity = current_velocity - random_dict['velocity_change']
+	result.append(first_car_data)
+	return result
+
 
 """
 	Get sudden dip
