@@ -26,6 +26,7 @@ function startData(){
         displayHeatmap();
         showAccidentZones();
         showConstructionZones();
+        showIcyRoads();
         // calls the getCarData function every 1000 milliseconds
         carData = setInterval(getCarData, 1000);
         // get weather data every 30 mins
@@ -106,6 +107,32 @@ function showConstructionZones(){
           map: map,
           icon: '../static/images/construction.png'
       });
+    }
+}
+function showIcyRoads(){
+  //JSON contianing the start and end cocordinates of each construction area
+    var accidents = [
+      {
+        "accident":
+        [
+          {lat: 40.12116, lng: -88.24354},
+          {lat: 40.11825, lng:  -88.24360}
+        ]
+      }
+    ];
+
+    // draw a polyline with a blue color on the road for each point in the JSON object
+    // add an image depicting road construction at the start point
+    for(var a = 0; a < accidents.length; a++){
+      var accidentPath = new google.maps.Polyline({
+        path: accidents[a].accident,
+        geodesic: true,
+        strokeColor: '#00BFFF',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+      });
+      accidentPath.setMap(map);
+
     }
 }
 

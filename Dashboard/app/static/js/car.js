@@ -13,12 +13,22 @@ function displayMarkers(){
       for(var i = 0; i < numCars; i++){
         if(counter == 0)
           console.log(carLocData[i][counter].latitude+", "+ carLocData[i][counter].longitude);
+          var carIcon;
+        if(i % 8 != 0){
+          carIcon = '../static/images/car.png';
+        }
+        else{
+          carIcon = '../static/images/truck.png'
+        }
         var position = new google.maps.LatLng(carLocData[i][counter].latitude, carLocData[i][counter].longitude);
         marker = new google.maps.Marker({
             position: position,
             map: map,
-            icon: '../static/images/car.png'
+            icon: carIcon
+            // icon: '../static/images/car.png'
         });
+
+
 
         // console.log( circle.getBounds().contains( marker.getPosition() ) );
         // if the circle is made visible, for each car wiithin the circular alert area connect to the Firebase app and send out the message
