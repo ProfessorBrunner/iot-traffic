@@ -56,7 +56,8 @@ def get_n_car_motion_for_random_coordinates(num_coordinates, num_cars):
 		json_object['car_id'] = str(unique_id)
 		json_object['latitude'] = current_coordinate[0]
 		json_object['longitude'] = current_coordinate[1]
-		json_object['time_stamp'] = str(time_stamp)
+		json_object['time_stamp'] = time_stamp.strftime("%Y-%m-%d %H:%M:%S")
+
 		first_car_data.append(json_object)
 		time_stamp = time_stamp + datetime.timedelta(0, 300)
 	result.append(first_car_data)
@@ -84,7 +85,7 @@ def get_car_motion_for_coordinates(data, first_stamp):
 		temp_object['latitude'] = item['latitude']
 		temp_object['longitude'] = item['longitude']
 		time_stamp = time_stamp + datetime.timedelta(0, time_taken)
-		temp_object['time_stamp'] = str(time_stamp)
+		temp_object['time_stamp'] = time_stamp.strftime("%Y-%m-%d %H:%M:%S")
 		json_data.append(temp_object)
 		temp_object = item
 	return json_data
@@ -128,7 +129,7 @@ def get_random_coordinates_sudden_dip_varying(num_coordinates):
 		json_object['car_id'] = str(unique_id)
 		json_object['latitude'] = current_coordinate[0]
 		json_object['longitude'] = current_coordinate[1]
-		json_object['time_stamp'] = str(time_stamp)
+		json_object['time_stamp'] = time_stamp.strftime("%Y-%m-%d %H:%M:%S")
 		first_car_data.append(json_object)
 		time_stamp = time_stamp + datetime.timedelta(0, 300)
 		random_dict = randomize_conditions(2)
@@ -148,7 +149,7 @@ def get_random_coordinates_sudden_dip_varying(num_coordinates):
 		json_object['car_id'] = str(unique_id)
 		json_object['latitude'] = current_coordinate[0]
 		json_object['longitude'] = current_coordinate[1]
-		json_object['time_stamp'] = str(time_stamp)
+		json_object['time_stamp'] = time_stamp.strftime("%Y-%m-%d %H:%M:%S")
 		first_car_data.append(json_object)
 		time_stamp = time_stamp + datetime.timedelta(0, 300)
 		random_dict = randomize_conditions(2)
@@ -168,7 +169,7 @@ def get_random_coordinates_sudden_dip_varying(num_coordinates):
 		json_object['car_id'] = str(unique_id)
 		json_object['latitude'] = current_coordinate[0]
 		json_object['longitude'] = current_coordinate[1]
-		json_object['time_stamp'] = str(time_stamp)
+		json_object['time_stamp'] = time_stamp.strftime("%Y-%m-%d %H:%M:%S")
 		first_car_data.append(json_object)
 		time_stamp = time_stamp + datetime.timedelta(0, 300)
 		random_dict = randomize_conditions(2)
@@ -201,7 +202,7 @@ def get_random_coordinates_sudden_dip(num_coordinates):
 		json_object['car_id'] = str(unique_id)
 		json_object['latitude'] = current_coordinate[0]
 		json_object['longitude'] = current_coordinate[1]
-		json_object['time_stamp'] = str(time_stamp)
+		json_object['time_stamp'] = time_stamp.strftime("%Y-%m-%d %H:%M:%S")
 		first_car_data.append(json_object)
 		time_stamp = time_stamp + datetime.timedelta(0, 300)
 
@@ -213,7 +214,7 @@ def get_random_coordinates_sudden_dip(num_coordinates):
 		json_object['car_id'] = str(unique_id)
 		json_object['latitude'] = current_coordinate[0]
 		json_object['longitude'] = current_coordinate[1]
-		json_object['time_stamp'] = str(time_stamp)
+		json_object['time_stamp'] = time_stamp.strftime("%Y-%m-%d %H:%M:%S")
 		first_car_data.append(json_object)
 		time_stamp = time_stamp + datetime.timedelta(0, 300)
 
@@ -225,7 +226,7 @@ def get_random_coordinates_sudden_dip(num_coordinates):
 		json_object['car_id'] = str(unique_id)
 		json_object['latitude'] = current_coordinate[0]
 		json_object['longitude'] = current_coordinate[1]
-		json_object['time_stamp'] = str(time_stamp)
+		json_object['time_stamp'] = time_stamp.strftime("%Y-%m-%d %H:%M:%S")
 		first_car_data.append(json_object)
 		time_stamp = time_stamp + datetime.timedelta(0, 300)
 	result.append(first_car_data)
