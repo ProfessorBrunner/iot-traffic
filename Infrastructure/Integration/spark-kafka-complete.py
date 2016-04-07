@@ -2,8 +2,10 @@
 Spark streaming + Kafka integration
 From http://spark.apache.org/docs/latest/streaming-kafka-integration.html
 
-command to run: ./spark/spark-1.5.0-bin-hadoop2.6/bin/spark-submit --master spark://10.0.3.70:7077 --packages org.apache.spark:spark-streaming-kafka_2.10:1.5.0 spark-kafka-complete.py
+command to run: ../../../spark/spark-1.5.0-bin-hadoop2.6/bin/spark-submit --master spark://10.0.3.70:7077 --packages org.apache.spark:spark-streaming-kafka_2.10:1.5.0 spark-kafka-complete.py
 """
+
+from __future__ import print_function
 
 import pyspark
 from pyspark import SparkContext, SparkConf
@@ -15,13 +17,20 @@ conf = SparkConf().setAppName("Kafka-Spark")
 sc = SparkContext(conf=conf)
 
 # create StreamingContext
-ssc = StreamingContext(sc, 1)
+ssc = StreamingContext(sc, 30)
 
 # new approach (w/o receivers)
 topic = ["mytopic"]
 brokers =  "141.142.236.172:9092,141.142.236.194:9092"
 directKafkaStream = KafkaUtils.createDirectStream(ssc, topic, {"metadata.broker.list": brokers})
 
+lines = directKafkaStream.map(lambda x: x[1])
+counts = lines.flatMap(lambda line: line.split(" ")) \
+        .map(lambda word: (word, 1)) \
+        .reduceByKey(lambda a, b: a+b)
+counts.pprint()
+
+ssc.start()
+ssc.awaitTermination()
+
 print("finished this")
-print(ssc)
-#print(directKafkaStream)
