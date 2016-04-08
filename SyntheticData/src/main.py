@@ -4,7 +4,7 @@ import accident as accident
 import sys
 from kafka import SimpleProducer, KafkaClient
 
-SEED_BROKER = '141.142.236.172:9092'
+SEED_BROKER = 'broker_here'
 
 def generate_and_populate_rect_data_for_n_cars(data_points, num_cars):
     res = rect.get_n_car_motion_for_random_coordinates(data_points, num_cars)
@@ -17,7 +17,7 @@ def generate_and_populate_rect_data_for_n_cars(data_points, num_cars):
          for obj in item:
              message_str = obj['car_id'] +','+ str(obj['latitude'])+','+str(obj['longitude'])+','+ obj['time_stamp']
              encoded = message_str.encode()
-             producer.send_messages(b'traffic', encoded)
+             producer.send_messages(b'topic_here', encoded)
 
 def generate_rect_data_speed_dip(data_points):
     res = rect.get_random_coordinates_sudden_dip(data_points)
