@@ -61,8 +61,8 @@ nohup ipython notebook --profile=nbserver
 ```
 
 ###Stopping ipython server
-Type in command and note the pid listed:
+Type in command and note the ***pid*** listed:
 ```lsof nohup.out```
 
-Kill that pid
-```kill ***pid***```
+Kill that pid:
+```kill pid```
