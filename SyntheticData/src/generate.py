@@ -21,11 +21,11 @@ def randomize_conditions(max_range):
 	random_dict['velocity_change'] = velocity_change
 	if random_direction < 6:
 		random_dict['direction'] = 90
-	else if random_direction < 8
+	elif random_direction < 8:
 		random_dict['direction'] = 180
-	else if random_direction < 10
+	elif random_direction < 10:
 		random_dict['direction'] = 270
-	else
+	else:
 		random_dict['direction'] = 360
 	return random_dict
 #end_def
