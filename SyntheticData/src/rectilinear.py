@@ -15,7 +15,7 @@ import geolib as geo
 EARTH_RADIUS = 6378.1						# Radius of earth
 SEED_COORDINATE = (40.12009,-88.247681)		# Coordinate
 SEED_VELOCITY = 20							# 10 miles/hour
-SEED_TIME = 0.0833333						# 5 minutes converted to hour
+SEED_TIME = 0.0167						    # 1 minute(s) converted to hour
 SEED_DIRECTION = 90							# 90 degrees
 SEED_VELOCITY_CRASHED = 5					# 5 miles/hour
 
