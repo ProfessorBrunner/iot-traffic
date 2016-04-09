@@ -40,3 +40,4 @@ Thumbs.db
 # Ipython stuff #
 #################
 nohup.out
+.ipynb_checkpoints/
