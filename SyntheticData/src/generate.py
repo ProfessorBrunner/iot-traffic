@@ -137,5 +137,6 @@ def check_accident(vehicle_id):
 	pass
 	return list_cars
 
+# Currently supports exact same coordinates but should get a 1 m radius
 def isAccidentProne(vehicle1_coord, vehicle2_coord):
 	return (vehicle1_coord == vehicle2_coord)
