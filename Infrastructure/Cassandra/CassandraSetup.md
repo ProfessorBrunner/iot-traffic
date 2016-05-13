@@ -24,7 +24,7 @@ Pick certain nodes as [seed nodes](http://wiki.apache.org/cassandra/FAQ#seed). I
 * First, stop Cassandra and clear data since the package installation starts it automatically.
   * `sudo service cassandra stop`
   * `sudo rm -rf /var/lib/cassandra/data/system/*`
-* Edit `/etc/cassandra/cassandra.yaml`. See [cassandra.yaml](https://github.com/ProfessorBrunner/iot-traffic/blob/master/Infrastructure/Integration/cassandra.yaml). For advanced properties, see [this](http://docs.datastax.com/en/cassandra/3.x/cassandra/initialize/initSingleDS.html).
+* Edit `/etc/cassandra/cassandra.yaml`. See [cassandra.yaml](https://github.com/ProfessorBrunner/iot-traffic/blob/master/Infrastructure/cassandra.yaml). For advanced properties, see [this](http://docs.datastax.com/en/cassandra/3.x/cassandra/initialize/initSingleDS.html).
 
 #### Start Cassandra
 
