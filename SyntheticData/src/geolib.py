@@ -4,6 +4,7 @@ import sys
 from time import strftime
 import datetime
 import uuid
+from math import atan2, degrees, pi
 import json
 
 EARTH_RADIUS = 6378.1						# Radius of earth
@@ -31,3 +32,12 @@ def distance_between_two_coordinates(source_coordinate, destination_coordinate):
 	standardized_arc = EARTH_RADIUS * arc
 	return standardized_arc
 #end_def
+
+def turn_detection(x1, x2, y1, y2):
+	dx = x2 - x1
+	dy = y2 - y1
+	rads = atan2(-dy,dx)
+	rads %= 2*pi
+	degs = degrees(rads)
+	return degs
+#enddef
