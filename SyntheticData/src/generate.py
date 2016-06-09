@@ -12,6 +12,8 @@ SEED_TIME = 0.0167						    # 1 minute(s) converted to hour
 SEED_DIRECTION = 90							# 90 degrees
 SEED_VELOCITY_CRASHED = 5					# 5 miles/hour
 
+vehicle_set = {}
+
 def randomize_conditions(max_range):
 	random_error = random.random()
 	random_range = random.randint(0, max_range)
@@ -116,6 +118,8 @@ def get_weather_dependent_motion_for_vehicles(num_vehicles, num_coordinates):
 			changes['windspeed'] = weather['wind']
 			changes['snow'] = weather['snow']
 			changes['tmin'] = weather['tmin']
+			vehicle_set[key] = (changes['latitude'], changes['longitude'])
+			accident_vehicle = check_accident(key)
  		#endfor
 		time_stamp = time_stamp + datetime.timedelta(0, 60)
 		result[current_key].append(changes)
@@ -123,3 +127,16 @@ def get_weather_dependent_motion_for_vehicles(num_vehicles, num_coordinates):
 	#endfor
 	return result
 #enddef
+
+def check_accident(vehicle_id):
+	list_cars = []
+	for key in vehicle_set:
+		if isAccidentProne(vehicle_set[key], vehicle_set[vehicle_id])
+			list_cars.append(key)
+		pass
+	pass
+	return list_cars
+
+# Currently supports exact same coordinates but should get a 1 m radius
+def isAccidentProne(vehicle1_coord, vehicle2_coord):
+	return (vehicle1_coord == vehicle2_coord)
